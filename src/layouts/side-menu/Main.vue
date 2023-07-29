@@ -4,22 +4,6 @@
     <div class="flex overflow-hidden">
       <!-- BEGIN: Side Menu -->
       <nav class="side-nav">
-        <router-link
-          class="intro-x flex items-center pl-5 pt-4 mt-3"
-          to="/workspace">
-          <h1 class="text-white">IMed</h1>
-<!--          <img-->
-<!--            alt="Tinker Tailwind HTML Admin Template"-->
-<!--            class="w-10"-->
-<!--            src="@/assets/icons/logo_sm.svg"-->
-<!--          />-->
-<!--          <img-->
-<!--            style="margin-left: 20px;"-->
-<!--            alt="Tinker Tailwind HTML Admin Template"-->
-<!--            class="h-10"-->
-<!--            src="@/assets/icons/logo_lg.svg"-->
-<!--          />-->
-        </router-link>
         <div class="side-nav__devider my-6"></div>
         <ul>
           <!-- BEGIN: First Child -->
@@ -146,7 +130,7 @@
       <!-- BEGIN: Content -->
       <div :class="{ 'content--dashboard': dashboardLayout }" class="content">
         <TopBar />
-        <router-view/>
+        <router-view />
       </div>
       <!-- END: Content -->
     </div>
@@ -164,15 +148,13 @@ import DarkModeSwitcher from '@/components/dark-mode-switcher/Main.vue'
 import SideMenuTooltip from '@/components/side-menu-tooltip/Main.vue'
 import { linkTo, nestedMenu, enter, leave } from './index'
 import store from "@/store";
-import HomePage from '@/views/public/Main.vue'
 
 export default defineComponent({
   components: {
     TopBar,
     MobileMenu,
     DarkModeSwitcher,
-    SideMenuTooltip,
-    HomePage
+    SideMenuTooltip
   },
   setup() {
     const dashboardLayout = ref(false)
@@ -183,15 +165,6 @@ export default defineComponent({
     const sideMenu = computed(() =>
       nestedMenu(store.state.sideMenu.menu, route)
     )
-
-    const currentPath = computed(()=>{
-      if(route.path == '/workspace/' || route.path == '/workspace'){
-        return true
-      }
-      else {
-        return false
-      }
-    });
 
     provide('setDashboardLayout', newVal => {
       dashboardLayout.value = newVal
@@ -219,39 +192,13 @@ export default defineComponent({
       router,
       linkTo,
       enter,
-      leave,
-      currentPath
+      leave
     }
   },
   methods:{
     checkMainMenu(menu) {
       const parsedMenu = JSON.parse(JSON.stringify(menu))
       let flag = true
-      // if (!parsedMenu.subMenu){
-      //   return this.checkAccess(parsedMenu.permission)
-      // }else {
-      //   for(let i = 0; i < parsedMenu.subMenu.length; i++){
-      //     if(!parsedMenu.subMenu[i].subMenu){
-      //       if(this.checkAccess(parsedMenu.subMenu[i].permission)){
-      //         flag = true
-      //       }
-      //     }else{
-      //       for(let x = 0; x < parsedMenu.subMenu[i].subMenu.length; x++){
-      //         if(!parsedMenu.subMenu[i].subMenu[x].subMenu){
-      //           if(this.checkAccess(parsedMenu.subMenu[i].subMenu[x].permission)){
-      //             flag = true
-      //           }
-      //         }else{
-      //           for(let z = 0; z < parsedMenu.subMenu[i].subMenu[x].subMenu.length; z++){
-      //             if(this.checkAccess(parsedMenu.subMenu[i].subMenu[x].subMenu[z].permission)){
-      //               flag = true
-      //             }
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
       return flag
     },
     checkAccess(permission) {
@@ -263,15 +210,6 @@ export default defineComponent({
     },
     checkArray(userPermissions, permission) {
       let flagShow = true
-      // if (permission != null || permission != undefined) {
-      //   userPermissions.forEach(item => {
-      //     permission.forEach(item2 => {
-      //       if (item === item2 || item === 'SUPER_ADMIN') {
-      //         flagShow = true
-      //       }
-      //     })
-      //   })
-      // }
       return flagShow
     }
   }

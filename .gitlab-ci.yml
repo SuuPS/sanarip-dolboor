@@ -1,0 +1,28 @@
+image: node:alpine
+stages:
+  - build
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - node -v
+    - npm -v
+    - ls
+    - "sudo -S <<< $R_PASS npm install"
+    - "sudo -S <<< $R_PASS npm audit fix --force"
+    - "sudo -S <<< $R_PASS npm run build"
+    - echo "Compile complete."
+  artifacts:
+    paths:
+      - dist/
+
+deploy-job:
+  stage: deploy
+  script:
+    - ls
+    - echo "Deploying application..."
+    - "sudo -S <<< $R_PASS rm -r /home/sgradmin/sgr-front/dist"
+    - "sudo -S <<< $R_PASS cp -r dist/  /home/sgradmin/sgr-front/"
+    - echo "Application successfully deployed."

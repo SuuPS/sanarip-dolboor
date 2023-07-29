@@ -3,8 +3,11 @@ import main from '@/store/tinker/main'
 import sideMenu from '@/store/tinker/side-menu'
 import simpleMenu from '@/store/tinker/simple-menu'
 import topMenu from '@/store/tinker/top-menu'
+import changeablePage from "@/store/tinker/changeable-page";
 
 import auth from '@/store/modules/auth'
+
+import products from "@/store/modules/products";
 
 const store = createStore({
   modules: {
@@ -12,7 +15,9 @@ const store = createStore({
     sideMenu,
     simpleMenu,
     topMenu,
-    auth
+    auth,
+    changeablePage,
+    products
   }
 })
 

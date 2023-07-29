@@ -9,21 +9,6 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    container: {
-      // you can configure the container to be centered
-      center: true,
-      // or have default horizontal padding
-      padding: '1rem',
-      // default breakpoints but with 40px removed
-      screens: {
-        sm: '540px',
-        md: '720px',
-        lg: '960px',
-        xl: '1140px',
-        '2xl': '1320px',
-        '4k': '1320px'
-      },
-    },
     borderColor: (theme) => ({
         ...theme("colors"),
         DEFAULT: primaryColors.gray["300"],
@@ -95,6 +80,17 @@ module.exports = {
             2.5: 2.5,
         },
     },
+    borderRadius: {
+      'none': '0',
+      'sm': '0.125rem',
+      DEFAULT: '0.25rem',
+      DEFAULT: '4px',
+      'md': '0.375rem',
+      'lg': '0.5rem',
+      'full': '9999px',
+      'large': '12px',
+      'rounded-3xl': '30px'
+    }
 },
 variants: {
     extend: {

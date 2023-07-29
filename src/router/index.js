@@ -1,19 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import store from '@/store'
+import Vue from 'vue'
+import checkArray from '@/libs/checkArray'
+import isUndefined from "v-calendar";
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/layouts/top-menu/Main'),
-    children: [
-      // {
-      //   path: '/',
-      //   name: 'Main',
-      //   permission: [''],
-      //   component: () => import('@/views/public/Main.vue')
-      // },
-    ]
+    component: () => import('@/layouts/top-menu/Main')
   },
   {
     path: '/workspace',
@@ -23,52 +18,96 @@ const routes = [
       {
         path: 'userRole',
         name: 'UserRole',
-        permission: ['SUPER_ADMIN'],
+        permission: ['ADMIN'],
         component: () => import('@/views/Users/userRole/Main')
+      },
+      {
+        path: 'CodeProduct',
+        name: 'CodeProduct',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/codeProduct/Main')
+      },
+      {
+        path: 'CodeTnVed',
+        name: 'СodeTnVed',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/codeTnVed/Main')
+      },//
+      {
+        path: 'duration',
+        name: 'Duration',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/duration/Main')
+      },
+      {
+        path: 'typeFirm',
+        name: 'typeFirm',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/typeFirm/Main')
+      },
+      {
+        path: 'positionWork',
+        name: 'positionWork',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/positionWork/Main')
+      },
+      {
+        path: 'countries',
+        name: 'Сountries',
+        permission: ['USER'],
+        component: () => import('@/views/Goate/Main')
+      },
+      {
+        path: 'VidTovara',
+        name: 'VidTovara',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/vidTovara/Main')
+      },
+      {
+        path: 'organization',
+        name: 'organization',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/organization/Main')
+      },
+      {
+        path: 'department',
+        name: 'department',
+        permission: ['USER'],
+        component: () => import('@/views/Dictionaries/department/Main')
       },
       {
         path: 'users',
         name: 'Users',
-        permission: ['SUPER_ADMIN'],
+        permission: ['ADMIN'],
         component: () => import('@/views/Users/users/Main.vue')
       },
       {
-        path: 'services',
-        name: 'Services',
-        permission: ['SERVICE_READ'],
-        component: () => import('@/views/administration/Service/MainList.vue')
+        path: 'nationalRegister',
+        name: 'NationalRegister',
+        permission: ['USER'],
+        component: () => import('@/views/nationalRegister/listForm/Main.vue'),
       },
       {
-        path: 'projects',
-        name: 'Projects',
-        permission: ['PROJECT_READ'],
-        component: () => import('@/views/administration/Project/Project.vue')
-      },
+        path: 'nationalRegisterObject/',
+        name: 'nationalRegisterObject',
+        permission: ['USER'],
+        component: () => import('@/views/nationalRegister/objectForm/Main.vue'),
+        props: route => ({ id: route.query.id })
+      }
+      ,
       {
-        path: 'typeOrganization',
-        name: 'TypeOrganization',
-        permission: ['TYPEOZ_READ'],
-        component: () => import('@/views/administration/TypeOrganization/TypeOrganization.vue')
-      },
-      {
-        path: 'typeOrganization-setRoles',
-        name: 'TypeOrganizationSetRoles',
-        permission: ['TYPEOZ_EDIT'],
-        component: () => import('@/views/administration/TypeOrganization/SetRoles.vue')
-      },
-      {
-        path: 'organizations',
-        name: 'Organizations',
-        permission: ['OZ_READ'],
-        component: () => import('@/views/administration/Organization/Organization.vue')
-      },
+        path: 'Proposal',
+        name: 'Proposal',
+        permission: ['USER'],
+        component: () => import('@/views/Proposal/Main'),
+        props: route => ({ id: route.query.id })
+      }
     ]
   },
-
   {
     path: '/sign-in',
     name: 'SignIn',
-    component: () => import('@/views/Auth/SignIn')
+    component: () => import('@/views/Auths/SignIn')
   },
   {
     path: '/sign-out',
@@ -111,13 +150,16 @@ const router = createRouter({
     return savedPosition || {left: 0, top: 0}
   }
 })
+
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/workspace', '/sign-in', '/404', '/sign-out', '/403', '/']
+  const publicPages = ['/', '/workspace', '/sign-in', '/404', '/sign-out', '/403', '/sickLeaveCertificate', '/citizen', '/foreigner', '/enlisted-population', '/check-talon']
 
   const path = to.path
   let pathNew = to.path
   const authRequired = !publicPages.includes(path)
+  // const authRequired = false
   const loggedIn = store.state.auth.user
+  // const loggedIn = true
   pathNew = pathNew.substr(1)
   let perm = null
 
@@ -129,8 +171,11 @@ router.beforeEach((to, from, next) => {
   })
   ed += ':id'
 
+  if (ed === 'cetificate/validate/:id') {
+    next()
+  }
 
-  routes[0].children.forEach(item => {
+  routes[1].children.forEach(item => {
     if ("workspace/" + item.path === pathNew) {
       perm = item.permission
     } else {
@@ -147,6 +192,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   })
+
   if (authRequired && !loggedIn) {
     next('/sign-in')
   } else if (publicPages.includes(path)) {
@@ -156,14 +202,12 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
-    if (loggedIn && store.state.auth.user.privileges != null) {
+    if (loggedIn && store.state.auth.user.permissions != null) {
       if (path === '/') {
         next('/workspace')
       }
-      const userPermissions = JSON.parse(
-        JSON.stringify(store.state.auth.user.privileges)
-      )
-      if (checkArray(userPermissions, perm)) {
+
+      if (checkArray(perm)) {
         next()
       } else {
         next({
@@ -177,19 +221,7 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-const checkArray = function (userPermissions, permission) {
-  let isAccess = true
-  // if (permission != null || permission != undefined) {
-  //   userPermissions.forEach(item => {
-  //     permission.forEach(item2 => {
-  //       if (item === item2 || item === 'SUPER_ADMIN') {
-  //         isAccess = true
-  //       }
-  //     })
-  //   })
-  // }
-  return isAccess
-}
 
+localStorage.setItem('my-router', JSON.stringify(router))
 
 export default router

@@ -7,26 +7,70 @@ const state = () => {
         title: 'Справочники',
         subMenu: [
           {
-            pageName: 'Services',
-            title: 'Сервисы',
-            permission: ['SERVICE_READ'],
+            pageName: 'CodeProduct',
+            title: 'Коды продукта',
+            permission: ['USER'],
           },
           {
-            pageName: 'Projects',
-            title: 'Проекты',
-            permission: ['PROJECT_READ'],
+            pageName: 'СodeTnVed',
+            title: 'Коды ТН ВЭД',
+            permission: ['USER'],
           },
           {
-            pageName: 'TypeOrganization',
-            title: 'Тип организации',
-            permission: ['TYPEOZ_READ'],
+            pageName: 'Duration',
+            title: 'Сроки действия',
+            permission: ['USER'],
           },
           {
-            pageName: 'Organizations',
+            pageName: 'typeFirm',
+            title: 'Типы фирм',
+            permission: ['USER'],
+          },
+          {
+            pageName: 'positionWork',
+            title: 'Должности',
+            permission: ['USER'],
+          },
+          {
+            pageName: 'VidTovara',
+            title: 'Виды товара',
+            permission: ['USER'],
+          },
+          {
+            pageName: 'organization',
             title: 'Организации',
-            permission: ['OZ_READ'],
+            permission: ['USER'],
+          },
+          {
+            pageName: 'department',
+            title: 'Отделы',
+            permission: ['USER'],
           }
         ]
+      },
+      {
+        icon: 'GlobeIcon',
+        pageName: 'side-menu-dashboard',
+        title: 'COATE',
+        subMenu: [
+          {
+            pageName: 'Сountries',
+            title: 'Страны',
+            permission: ['USER'],
+          }
+        ]
+      },
+      {
+        icon: 'LayersIcon',
+        pageName: 'NationalRegister',
+        title: 'Национальный реестр',
+        permission: ['USER'],
+      },
+      {
+        icon: 'ArchiveIcon',
+        pageName: 'Proposal',
+        title: 'Заявки',
+        permission: ['USER'],
       },
       {
         icon: 'SettingsIcon',
@@ -36,12 +80,12 @@ const state = () => {
           {
             pageName: 'UserRole',
             title: 'Роли',
-            permission: ['SUPER_ADMIN']
+            permission: ['ADMIN']
           },
           {
             pageName: 'Users',
             title: 'Пользователи',
-            permission: ['SUPER_ADMIN']
+            permission: ['ADMIN']
           }
         ]
       }

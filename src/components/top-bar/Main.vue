@@ -21,12 +21,16 @@
       </div>
       <div class="dropdown-menu w-56" id="profile-dropdown">
         <div class="dropdown-menu__content box dark:bg-dark-6">
-          <div
-            class="p-4 border-b border-black border-opacity-5 dark:border-dark-3"
-          >
-            <div class="font-medium">{{ user != null && user.firstName != null && user.surname != null && user.patronymic != null ? user.surname + ' ' + user.firstName + ' ' + user.patronymic : '' }}</div>
+          <div class="p-4 border-b border-black border-opacity-5 dark:border-dark-3">
+
+            <div class="font-medium">
+              {{ user != null && user.organization != null ? user.organization.ozShortName : '' }}</div>
+
+            <div class="font-medium">
+              {{ user != null && user.name != null && user.surname != null && user.patronymic != null ? user.surname + ' ' + user.name + ' ' + user.patronymic : '' }}</div>
+
             <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">
-              {{ user != null && user.login != null ?  user.login + ' (' + user.roles + ')' : ''}}
+              {{ user != null && user.pin != null ?  user.pin : '' }}
             </div>
           </div>
           <div class="p-2">
@@ -57,7 +61,7 @@ import store from '@/store'
 export default defineComponent({
   data() {
     return {
-      user: store.state.auth.user
+      user: store.state.auth.user.user
     }
   },
   setup() {
@@ -95,6 +99,7 @@ export default defineComponent({
         })
       this.$store.user = null
     }
-  }
+  },
 })
+
 </script>

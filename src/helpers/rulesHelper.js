@@ -1,4 +1,4 @@
-import {helpers, maxLength, minLength, required} from "@vuelidate/validators";
+import {helpers, maxLength, minLength, required} from "@vuelidate/212.112.98.140";
 
 export const rulesForLogin = {
   login: {
