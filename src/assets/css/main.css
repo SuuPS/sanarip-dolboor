@@ -1,0 +1,64 @@
+.select2-container {
+    z-index: 1000;
+    background-color: white;
+}
+.select2 {
+    width: 100% !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border-radius: 0.375rem !important;
+    border-width: 1px !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+.select2-selection {
+    border: 1px solid #fff !important;
+}
+.mosha__toast  {
+    z-index: 100000 !important;
+}
+.custom-modal {
+    margin-top: 0px !important;
+    margin-left: 0px!important;
+    padding-left: 0px !important;
+    z-index: 1000;
+}
+
+.customize-table {
+    --easy-table-border: 1px solid #ffffff;
+    --easy-table-header-font-size: 14px;
+    --easy-table-header-height: 50px;
+    --easy-table-header-font-color: #212121;
+    --easy-table-header-background-color: #ffffff;
+
+    --easy-table-header-item-padding: 10px 15px;
+
+    --easy-table-body-row-font-color: #212121;
+    --easy-table-body-row-background-color: #ffffff;
+    --easy-table-body-row-height: 50px;
+    --easy-table-body-row-font-size: 14px;
+
+    --easy-table-body-row-hover-font-color: #212121;
+    --easy-table-body-row-hover-background-color: #eee;
+
+    --easy-table-body-item-padding: 10px 15px;
+
+    --easy-table-footer-background-color: #ffffff;
+    --easy-table-footer-font-color: #212121;
+    --easy-table-footer-font-size: 14px;
+    --easy-table-footer-padding: 0px 10px;
+    --easy-table-footer-height: 50px;
+
+    --easy-table-rows-per-page-selector-width: 70px;
+    --easy-table-rows-per-page-selector-option-padding: 10px;
+    --easy-table-rows-per-page-selector-z-index: 1;
+
+
+    --easy-table-scrollbar-track-color: #ffffff;
+    --easy-table-scrollbar-color: #ffffff;
+    --easy-table-scrollbar-corner-color: #ffffff;
+    --easy-table-loading-mask-background-color: #ffffff;
+}

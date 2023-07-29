@@ -1,0 +1,122 @@
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+header,
+footer {
+  background-color: rgb(20, 101, 151);
+}
+
+.nav {
+  margin: 0px auto;
+  max-width: 1240px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+.burger-menu {
+  visibility: hidden;
+  position: absolute;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+.menu .link {
+  margin-right: 40px;
+}
+
+.menu .link:last-child {
+  margin-right: 0px;
+}
+
+@media screen and (max-width: 440px) {
+  .nav {
+    display: block;
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  .logo {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+  }
+
+  .burger-menu {
+    width: 48px;
+    height: 48px;
+    visibility: visible;
+    position: absolute;
+    top: 22px;
+    right: 25px;
+  }
+
+  .link {
+    margin-bottom: 40px;
+    font-size: 24px;
+    z-index: 1;
+  }
+
+  .menu {
+    padding: 25px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+  }
+
+  .auth {
+    padding: 25px;
+  }
+
+  .footer-p {
+    width: 85%;
+    text-align: center;
+  }
+
+  header,
+  footer {
+    background-color: rgb(20, 101, 151);
+  }
+
+  .mobile {
+    visibility: visible;
+  }
+
+  .hide {
+    visibility: hidden;
+  }
+
+  .mobile-wrapper {
+    background-color: rgb(20, 101, 151);
+    z-index: 10;
+  }
+}

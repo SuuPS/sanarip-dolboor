@@ -1,0 +1,129 @@
+.auth_wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3b80b1;
+  color: white;
+}
+
+img {
+  max-width: 480px;
+  height: auto;
+}
+
+.p1 {
+  margin-top: 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.p2 {
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+input,
+button {
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.25);
+}
+
+input[type='text'] {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000;
+}
+
+input[type='password'] {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000;
+}
+
+input {
+  width: 500px;
+  height: 60px;
+  margin-top: 70px;
+  padding: 0px 20px;
+  display: block;
+  border-radius: 15px;
+}
+
+select {
+  width: 500px;
+  height: 60px;
+  margin-top: 20px;
+  padding: 0px 10px;
+  display: block;
+  border-radius: 15px;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000;
+}
+
+option {
+  width: 500px;
+  height: 60px;
+  margin-top: 20px;
+  padding: 0px 10px;
+  display: block;
+  border-radius: 15px;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 23px;
+
+  color: #000;
+}
+
+.password input {
+  margin-top: 20px;
+}
+
+.password {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
+.button {
+  width: 500px;
+  height: 60px;
+  margin-top: 50px;
+  padding: 0px 20px;
+  display: block;
+  border-radius: 15px;
+}
+
+.button:last-of-type {
+  margin-top: 20px;
+  display: block;
+}
+
+.error {
+
+  border-width: 2px;
+  border-color: #ff0000;
+  color: red;
+}
