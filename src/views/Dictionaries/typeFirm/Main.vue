@@ -3,7 +3,6 @@
     <div class="col-span-full"><h1 class="text-xl font-bold">Типы фирм</h1></div>
     <div class="col-span-12 border rounded-xl p-3 bg-theme-4 shadow">
       <button
-        v-if="checkArray('ADMIN')"
         type="button"
         @click="showCreateModal()"
         class="btn btn-primary">
@@ -16,14 +15,14 @@
           <tr class="bg-gray-200 text-gray-700">
             <th>Название</th>
             <th>Код</th>
-            <th v-if="checkArray('ADMIN')" class="text-center whitespace-nowrap">Действия</th>
+            <th class="text-center whitespace-nowrap">Действия</th>
           </tr>
           </thead>
           <tbody>
           <tr v-for="codeitem in genResult.content" :key="codeitem" class="hover:bg-gray-200">
             <td class="border-b dark:border-dark-5">{{ codeitem.name.substr(0, 50) }}</td>
             <td class="border-b dark:border-dark-5">{{ codeitem.name.substr(0, 50) }}</td>
-            <td v-if="checkArray('ADMIN')" class="table-report__action border-b dark:border-dark-5">
+            <td class="table-report__action border-b dark:border-dark-5">
               <div class="flex justify-center items-center">
                 <a class="flex items-center mr-3" href="javascript:;"
                    @click="showEditModal(codeitem)">
@@ -214,7 +213,6 @@
 import {onMounted, reactive, ref} from "vue";
 import {createToast} from "mosha-vue-toastify";
 import {TypeFirmService} from "@/services";
-import checkArray from '@/libs/checkArray'
 
 const loading = ref(false)
 const genResult = reactive({

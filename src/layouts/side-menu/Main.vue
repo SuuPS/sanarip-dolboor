@@ -144,7 +144,6 @@ import { useStore } from '@/store'
 import { helper as $h } from '@/utils/helper'
 import TopBar from '@/components/top-bar/Main.vue'
 import MobileMenu from '@/components/mobile-menu/Main.vue'
-import DarkModeSwitcher from '@/components/dark-mode-switcher/Main.vue'
 import SideMenuTooltip from '@/components/side-menu-tooltip/Main.vue'
 import { linkTo, nestedMenu, enter, leave } from './index'
 import store from "@/store";
@@ -153,7 +152,6 @@ export default defineComponent({
   components: {
     TopBar,
     MobileMenu,
-    DarkModeSwitcher,
     SideMenuTooltip
   },
   setup() {

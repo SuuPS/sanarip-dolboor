@@ -1,6 +1,5 @@
 <template>
   <div>
-    <DarkModeSwitcher />
     <div class="container">
       <!-- BEGIN: Error Page -->
       <div
@@ -31,12 +30,8 @@
 
 <script>
 import { defineComponent, onMounted } from 'vue'
-import DarkModeSwitcher from '@/components/dark-mode-switcher/Main.vue'
 
 export default defineComponent({
-  components: {
-    DarkModeSwitcher
-  },
   setup() {
     onMounted(() => {
       cash('body')

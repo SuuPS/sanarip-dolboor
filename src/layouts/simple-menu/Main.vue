@@ -1,6 +1,5 @@
 <template>
   <div>
-    <DarkModeSwitcher />
     <MobileMenu :dashboard-layout="dashboardLayout" layout="simple-menu" />
     <div class="flex overflow-hidden">
       <!-- BEGIN: Simple Menu -->
@@ -153,14 +152,12 @@ import { useStore } from '@/store'
 import { helper as $h } from '@/utils/helper'
 import TopBar from '@/components/top-bar/Main.vue'
 import MobileMenu from '@/components/mobile-menu/Main.vue'
-import DarkModeSwitcher from '@/components/dark-mode-switcher/Main.vue'
 import { linkTo, nestedMenu, enter, leave } from '@/layouts/side-menu'
 
 export default defineComponent({
   components: {
     TopBar,
     MobileMenu,
-    DarkModeSwitcher
   },
   setup() {
     const dashboardLayout = ref(false)

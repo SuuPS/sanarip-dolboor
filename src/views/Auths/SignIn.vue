@@ -1,6 +1,5 @@
 <template>
   <div>
-    <DarkModeSwitcher/>
     <div class="container sm:px-10">
       <div class="block xl:grid grid-cols-2 gap-4">
         <!-- BEGIN: Login Info -->
@@ -108,7 +107,6 @@ import {useRouter} from 'vue-router'
 import {useStore} from 'vuex'
 import useVuelidate from '@vuelidate/core'
 import {helpers, required} from '@vuelidate/validators'
-import DarkModeSwitcher from '@/components/dark-mode-switcher/Main.vue'
 import Spinner from '@/app-components/UIComponents/Spinner.vue'
 import {createToast} from "mosha-vue-toastify";
 import mixins from "@/helpers/mixins";

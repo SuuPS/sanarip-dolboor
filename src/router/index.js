@@ -22,85 +22,16 @@ const routes = [
         component: () => import('@/views/Users/userRole/Main')
       },
       {
-        path: 'CodeProduct',
-        name: 'CodeProduct',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/codeProduct/Main')
-      },
-      {
-        path: 'CodeTnVed',
-        name: 'СodeTnVed',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/codeTnVed/Main')
-      },//
-      {
-        path: 'duration',
-        name: 'Duration',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/duration/Main')
-      },
-      {
         path: 'typeFirm',
         name: 'typeFirm',
         permission: ['USER'],
         component: () => import('@/views/Dictionaries/typeFirm/Main')
       },
       {
-        path: 'positionWork',
-        name: 'positionWork',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/positionWork/Main')
-      },
-      {
-        path: 'countries',
-        name: 'Сountries',
-        permission: ['USER'],
-        component: () => import('@/views/Goate/Main')
-      },
-      {
-        path: 'VidTovara',
-        name: 'VidTovara',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/vidTovara/Main')
-      },
-      {
-        path: 'organization',
-        name: 'organization',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/organization/Main')
-      },
-      {
-        path: 'department',
-        name: 'department',
-        permission: ['USER'],
-        component: () => import('@/views/Dictionaries/department/Main')
-      },
-      {
         path: 'users',
         name: 'Users',
         permission: ['ADMIN'],
         component: () => import('@/views/Users/users/Main.vue')
-      },
-      {
-        path: 'nationalRegister',
-        name: 'NationalRegister',
-        permission: ['USER'],
-        component: () => import('@/views/nationalRegister/listForm/Main.vue'),
-      },
-      {
-        path: 'nationalRegisterObject/',
-        name: 'nationalRegisterObject',
-        permission: ['USER'],
-        component: () => import('@/views/nationalRegister/objectForm/Main.vue'),
-        props: route => ({ id: route.query.id })
-      }
-      ,
-      {
-        path: 'Proposal',
-        name: 'Proposal',
-        permission: ['USER'],
-        component: () => import('@/views/Proposal/Main'),
-        props: route => ({ id: route.query.id })
       }
     ]
   },
@@ -125,19 +56,10 @@ const routes = [
     }
   },
   {
-    path: '/404',
-    name: 'ErrorPage',
-    component: () => import('@/views/error-page/Main')
-  },
-  {
     path: '/403',
     name: 'ErrorPage403',
     component: () => import('@/views/error-page/Main403')
   },
-  {
-    path: '/:pathMatch(.*)*',
-    component: () => import('@/views/error-page/Main')
-  }
 
 ]
 
@@ -152,7 +74,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/', '/workspace', '/sign-in', '/404', '/sign-out', '/403', '/sickLeaveCertificate', '/citizen', '/foreigner', '/enlisted-population', '/check-talon']
+  const publicPages = ['/', '/workspace', '/sign-in', '/404', '/sign-out', '/403']
 
   const path = to.path
   let pathNew = to.path
